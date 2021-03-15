@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "467065229030",
+    "project_id": "test-geo-1529912993138",
+    "storage_bucket": "test-geo-1529912993138.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467065229030:android:60c3b945a9784b84343527",
+        "android_client_info": {
+          "package_name": "com.example.shhnatycemexdriver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "467065229030-bdlfkv2b64ppbdur2vmla6ddmc99p2ru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLJFZov3O1a6eecDfEuJsP4910EonXpvU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467065229030-bdlfkv2b64ppbdur2vmla6ddmc99p2ru.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
