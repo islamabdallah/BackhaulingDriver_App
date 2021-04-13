@@ -10,6 +10,7 @@ const String  postTruck = trunksUrl + "/assignToMobile";
 const String allTrips = baseUrl +"/trips";
 const String updateLocation = trunksUrl + '/update';
 const String loginUrl = baseUrl + '/driver/login';
+const String logOut = baseUrl + '/driver/trucks';
 
 
 const FONT_FAMILY = 'DroidKufi';

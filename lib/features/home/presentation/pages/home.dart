@@ -7,6 +7,7 @@ import 'package:shhnatycemexdriver/core/constants.dart';
 import 'package:shhnatycemexdriver/core/services/local_storage/local_storage_service.dart';
 import 'package:shhnatycemexdriver/features/login/presentation/pages/login-page.dart';
 import 'package:shhnatycemexdriver/features/truck_number/data/models/truck-number.dart';
+import 'package:shhnatycemexdriver/features/home/data/repositories/home-repository-implementation.dart';
 
 class HomeWidget extends StatefulWidget {
   static const routeName = 'HomeWidget';
@@ -17,6 +18,8 @@ class HomeWidget extends StatefulWidget {
 class HomeWidgetState extends State<HomeWidget> {
   var selectedIndex = 0;
   LocalStorageService localStorage = LocalStorageService();
+  HomeRepositoryImplementation repo = new HomeRepositoryImplementation();
+
   TruckNumberModel truck;
   @override
   void initState() {
@@ -31,6 +34,14 @@ class HomeWidgetState extends State<HomeWidget> {
       truck = truckn ;
     });
   }
+
+  logOut(BuildContext context) {
+    final res =  repo.logoutUser(userId: truck.truckNumber);
+    localStorage.removeDriverID();
+    DBHelper.update('truck_status', null, 'driverId');
+    Navigator.pushReplacementNamed(context, LoginWidget.routeName);
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -70,12 +81,7 @@ class HomeWidgetState extends State<HomeWidget> {
             actions: <Widget>[
               FlatButton(
                 textColor: Colors.white,
-                onPressed: () {
-                  localStorage.removeDriverID();
-                  DBHelper.update('truck_status', null, 'driverId');
-                  Navigator.pushReplacementNamed(
-                      context, LoginWidget.routeName);
-                },
+                onPressed: () => logOut(context),
                 child: Text("خروج",style: new TextStyle(
                     fontFamily: FONT_FAMILY,
                     fontSize: 20.0,
