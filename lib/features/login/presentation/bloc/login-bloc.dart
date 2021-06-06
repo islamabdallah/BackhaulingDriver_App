@@ -1,7 +1,9 @@
+// @dart=2.9
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shhnatycemexdriver/core/base_bloc/base_bloc.dart';
 import 'package:shhnatycemexdriver/core/constants.dart';
 import 'package:shhnatycemexdriver/core/services/local_storage/local_storage_service.dart';
+import 'package:shhnatycemexdriver/core/services/location_service/location_service.dart';
 import 'package:shhnatycemexdriver/core/sqllite/sqlite_api.dart';
 import 'package:shhnatycemexdriver/features/login/data/repositories/user-repositories-implementation.dart';
 import 'package:shhnatycemexdriver/features/login/presentation/bloc/login-events.dart';
@@ -27,11 +29,13 @@ class LoginBloc extends Bloc<BaseEvent, BaseLoginState> {
         final currentTruckDB = await DBHelper.getData('truck_status');
         final checkStatus = (currentTruckDB.length > 0) ? currentTruckDB[0]['tripStatus'] : null;
         print(checkStatus);
+
         if(checkStatus == null ) {
 //          localStorage.setTripStatus(StatusType['0_Ideal']);
           DBHelper.update('truck_status', StatusType['0_Ideal'], 'tripStatus');
 
         }
+        final res = await LocationService().updateTimerLoction();
         yield LoginSuccessState();
       }
     }

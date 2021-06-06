@@ -1,3 +1,4 @@
+// @dart=2.9
 class TruckNumberModel {
    String truckNumber;
    String sapTruckNumber;

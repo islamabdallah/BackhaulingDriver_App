@@ -19,11 +19,11 @@ class Errors {
 
   static BaseError handleDioError(DioError error) {
     print('error.type = ${(error.type) }');
-    if (error.type == DioErrorType.DEFAULT ||
-        error.type == DioErrorType.RESPONSE) {
+    if (error.type == DioErrorType.other ||
+        error.type == DioErrorType.response) {
       if (error is SocketException) return SocketError();
-      if (error.type == DioErrorType.RESPONSE) {
-        switch (error.response.statusCode) {
+      if (error.type == DioErrorType.response) {
+        switch (error.response?.statusCode) {
           case 400:
             return BadRequestError();
           case 401:
@@ -42,11 +42,11 @@ class Errors {
         }
       }
       return NetError();
-    } else if (error.type == DioErrorType.CONNECT_TIMEOUT ||
-        error.type == DioErrorType.SEND_TIMEOUT ||
-        error.type == DioErrorType.RECEIVE_TIMEOUT) {
+    } else if (error.type == DioErrorType.connectTimeout ||
+        error.type == DioErrorType.sendTimeout ||
+        error.type == DioErrorType.receiveTimeout) {
       return TimeoutError();
-    } else if (error.type == DioErrorType.CANCEL) {
+    } else if (error.type == DioErrorType.cancel) {
       return CancelError();
     } else
       return UnknownError();

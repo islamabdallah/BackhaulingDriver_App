@@ -1,3 +1,5 @@
+// @dart=2.9
+
 // import 'dart:developer';
 // import 'package:shhnatycemexdriver/core/errors/base_error.dart';
 // import 'package:shhnatycemexdriver/core/errors/unexpected_error.dart';
@@ -75,6 +77,8 @@ import 'package:shhnatycemexdriver/features/trip_detail/data/models/trip.dart';
 import 'package:shhnatycemexdriver/features/truck_number/data/models/truck-number.dart';
 import 'package:shhnatycemexdriver/features/truck_number/data/models/truck_data.dart';
 
+import 'location_service_repository.dart';
+
 class LocationService {
 
   Future<Position> currentLocation() async {
@@ -86,10 +90,8 @@ class LocationService {
     Position currentLocation = await this.currentLocation();
     TruckNumberModel truckNumber = await localStorage.getTruckModel();
     if(truckNumber == null) return null;
-//    NotificationModel trip = await localStorage.getCurrentTrip();
-    String token = await  PushNotificationService.getDeviceToken();
+    String token = await localStorage.getToken();
     String driverID = await localStorage.getDriverID();
-//    String tripStatus =  await localStorage.getTripStatus();
     final currentTripDB = await DBHelper.getData('current_trip');
     NotificationModel trip = (currentTripDB.length > 0) ? NotificationModel.fromJson(currentTripDB[0]) : null;
     final currentTruckDB = await DBHelper.getData('truck_status');
@@ -112,6 +114,12 @@ class LocationService {
     return tripModel;
   }
 
+  updateTimerLoction() async {
+    print("truckLocation");
+    Position currentLocation = await this.currentLocation();
+    LocationServiceRepository myLocationCallbackRepository = LocationServiceRepository();
+    await myLocationCallbackRepository.updateTrip(currentLocation);
+  }
 
 
 }

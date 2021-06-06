@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter/cupertino.dart';
 import 'package:package_info/package_info.dart';
 import 'package:shhnatycemexdriver/core/ui/widgets/snackbar_and_toast.dart';

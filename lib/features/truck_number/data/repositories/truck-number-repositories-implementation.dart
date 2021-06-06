@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shhnatycemexdriver/core/errors/base_error.dart';
 import 'package:shhnatycemexdriver/core/errors/custom_error.dart';
@@ -16,7 +17,24 @@ class GetTruckNumberRepositoryImplementation  {
 
   Future<Result<List<TruckNumberModel>>> getAllAvailableTruck( ) async{
     List<TruckNumberModel> trucks = [];
-    // TODO: implement getAllAvailableTruck
+
+//    to add truck when run app
+//    TruckNumberModel truckNumberModel = TruckNumberModel(truckNumber:'Test', sapTruckNumber: 'RNT_Test',
+//        firebaseToken: "dEOFgkmSTpq3zf8p0Zry8E:APA91bE_RTIDmW9jIZmQg08Gv-4IUk_UrE-Qk5MXJJw3Lt1I60dkiDi5SLELDwFBsFNXhLInaEo3dkESR8l3juSnhVhBPx7mAjTFDugd4dT7_2B3NXzv1EJ91xpp9w7Cdfnzpqc_3KEX");
+//    DBHelper.insert('truck_data', truckNumberModel.toJson());
+//    var trucKDBModel =  {
+//      "requestId": 0,
+//      "shipmentId": null,
+//      "truckNumber": "Test",
+//      "sapTruckNumber": "RNT_Test",
+//      "tripStatus": '0_Ideal',
+//      "tripBreak": 0,
+//      "firebaseToken": "dEOFgkmSTpq3zf8p0Zry8E:APA91bE_RTIDmW9jIZmQg08Gv-4IUk_UrE-Qk5MXJJw3Lt1I60dkiDi5SLELDwFBsFNXhLInaEo3dkESR8l3juSnhVhBPx7mAjTFDugd4dT7_2B3NXzv1EJ91xpp9w7Cdfnzpqc_3KEX",
+//      "driverId": null
+//    };
+//    DBHelper.insert('truck_status', trucKDBModel);
+
+//     TODO: implement getAllAvailableTruck
     final response = await CoreRepository.request(url:trunksUrl,
         method: HttpMethod.GET, converter: null );
 
@@ -73,7 +91,8 @@ class GetTruckNumberRepositoryImplementation  {
         "firebaseToken": token,
         "driverId": null
       };
-       DBHelper.insert('truck_status', trucKDBModel);
+
+    DBHelper.insert('truck_status', trucKDBModel);
 
        print("after save seen ");
         await LocalStorageService().setTruckModel(truckNumberModel: truckNumberModel) ;

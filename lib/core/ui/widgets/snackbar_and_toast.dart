@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:shhnatycemexdriver/core/errors/error_helper.dart';
 import 'package:shhnatycemexdriver/core/screen_utils/screen_utils.dart';
 import 'package:shhnatycemexdriver/core/services/navigation_service/navigation_service.dart';

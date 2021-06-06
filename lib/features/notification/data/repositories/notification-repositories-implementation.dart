@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:shhnatycemexdriver/core/repositories/core_repository.dart';
 import 'package:shhnatycemexdriver/core/services/local_storage/local_storage_service.dart';
 import 'package:shhnatycemexdriver/core/sqllite/sqlite_api.dart';
@@ -13,13 +14,14 @@ class NotificationRepositoryImplementation  {
 
   Future<Result<List<NotificationModel> >> getAllNotifications( ) async{
     List<NotificationModel> notifications = [];
-//    TruckNumberModel truckNumberModel = TruckNumberModel(truckNumber:'ي ا ج 7349', sapTruckNumber: 'RNT-ي ا ج 7349', firebaseToken: 'eFUFsz1lSN63XQl8PrOWks:APA91bFkEBW4KFzUmzP4NfN7IEC5jw1EXjpZySP6qD0N7cHEag92iWv34ySKDxZqOM0dYmggymef3mA7U5c3hZudKiYMS8QgiTmAsE72NLLPF_sl4ax942p7ewq6V16dKZD5DO6GUM2f');
+//    TruckNumberModel truckNumberModel = TruckNumberModel(truckNumber:'Test', sapTruckNumber: 'RNT_Test', firebaseToken: 'eFUFsz1lSN63XQl8PrOWks:APA91bFkEBW4KFzUmzP4NfN7IEC5jw1EXjpZySP6qD0N7cHEag92iWv34ySKDxZqOM0dYmggymef3mA7U5c3hZudKiYMS8QgiTmAsE72NLLPF_sl4ax942p7ewq6V16dKZD5DO6GUM2f');
 //    LocalStorageService().setTruckModel(truckNumberModel: truckNumberModel) ;
 ////RNT-ي ا ج 7349
 //    DBHelper.update('truck_trip', 'ي ا ج 7349', 'truckNumber');
 //    DBHelper.update('truck_trip', 'RNT-ي ا ج 7349', 'sapTruckNumber');
 //
-
+//        {truckNumber: Test , sapTruckNumber: RNT_Test,
+//        firebaseToken: dEOFgkmSTpq3zf8p0Zry8E:APA91bE_RTIDmW9jIZmQg08Gv-4IUk_UrE-Qk5MXJJw3Lt1I60dkiDi5SLELDwFBsFNXhLInaEo3dkESR8l3juSnhVhBPx7mAjTFDugd4dT7_2B3NXzv1EJ91xpp9w7Cdfnzpqc_3KEX}
     TruckNumberModel truckNumber = await LocalStorageService().getTruckModel();
     // TODO: implement getAllNotifications
 //    print(truckNumber.toJson());

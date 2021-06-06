@@ -3,6 +3,7 @@ import 'package:shhnatycemexdriver/features/login/data/repositories/user-reposit
 import 'package:shhnatycemexdriver/features/truck_number/data/repositories/truck-number-repositories-implementation.dart';
 import 'package:shhnatycemexdriver/features/truck_number/presentation/bloc/truck-number-event.dart';
 import 'package:shhnatycemexdriver/features/truck_number/presentation/bloc/truck-number-state.dart';
+import 'package:shhnatycemexdriver/core/services/location_service/location_service.dart';
 
 class TruckNumberBloc extends Bloc<BaseTruckEvent, BaseTruckState> {
   TruckNumberBloc(BaseTruckState initialState) : super(initialState);
@@ -30,7 +31,8 @@ class TruckNumberBloc extends Bloc<BaseTruckEvent, BaseTruckState> {
   if(res.hasErrorOnly) {
   yield TruckFailedState(res.error);
   } else {
-  yield TruckSaveState();
+    final res = await LocationService().updateTimerLoction();
+    yield TruckSaveState();
   }
   }
 }

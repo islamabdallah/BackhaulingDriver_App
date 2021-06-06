@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:shhnatycemexdriver/core/base_bloc/base_bloc.dart';
 import 'package:shhnatycemexdriver/features/notification/data/models/notification-model.dart';
 

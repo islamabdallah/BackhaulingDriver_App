@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:shhnatycemexdriver/core/errors/base_error.dart';
 import 'package:shhnatycemexdriver/features/notification/data/models/notification-model.dart';
 

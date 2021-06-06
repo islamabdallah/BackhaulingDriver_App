@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:shhnatycemexdriver/core/screen_utils/screen_utils.dart';
 import 'package:shhnatycemexdriver/core/ui/styles/global_colors.dart';

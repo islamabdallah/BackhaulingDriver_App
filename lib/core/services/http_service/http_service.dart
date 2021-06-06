@@ -4,12 +4,12 @@ import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 
 class HttpService {
-  /** 
+  /**
    * If you're making multiple requests to the same server,
    *  you can keep open a persistent connection by using a Client
-   *  rather than making one-off requests. If you do this, 
+   *  rather than making one-off requests. If you do this,
    * make sure to close the client when you're done:
-  */
+   */
   final client = http.Client();
   final Map<String, String> publicHeader = {
     'Content-type': 'application/json',
@@ -19,8 +19,9 @@ class HttpService {
   Future<Either<BaseError, http.Response>> httpPublicPost(
       String url, dynamic body) async {
     try {
+      var urlUri = Uri.parse(url);
       final res =
-          await this.client.post(url, headers: publicHeader, body: body);
+      await this.client.post(urlUri, headers: publicHeader, body: body);
       return Right(res);
     } catch (error) {
       return Left(UnExpectedError());
@@ -29,7 +30,9 @@ class HttpService {
 
   Future<Either<BaseError, http.Response>> httpPublicGet(String url) async {
     try {
-      final res = await this.client.get(url, headers: publicHeader);
+      var urlUri = Uri.parse(url);
+
+      final res = await this.client.get(urlUri, headers: publicHeader);
       /// TODO SERIALIZE
       return Right(res);
     } catch (error) {
@@ -40,7 +43,9 @@ class HttpService {
   Future<Either<BaseError, http.Response>> httpPublicPut(
       String url, dynamic body) async {
     try {
-      final res = await this.client.put(url, headers: publicHeader, body: body);
+      var urlUri = Uri.parse(url);
+
+      final res = await this.client.put(urlUri, headers: publicHeader, body: body);
       return Right(res);
     } catch (error) {
       return Left(UnExpectedError());
@@ -49,7 +54,9 @@ class HttpService {
 
   Future<Either<BaseError, http.Response>> httpPublicDelete(String url) async {
     try {
-      final res = await this.client.delete(url, headers: publicHeader);
+      var urlUri = Uri.parse(url);
+
+      final res = await this.client.delete(urlUri, headers: publicHeader);
       return Right(res);
     } catch (error) {
       return Left(UnExpectedError());
@@ -62,8 +69,10 @@ class HttpService {
       String url, dynamic body, String token) async {
     try {
       publicHeader['Authorization'] = token;
+      var urlUri = Uri.parse(url);
+
       final res =
-          await this.client.post(url, headers: publicHeader, body: body);
+      await this.client.post(urlUri, headers: publicHeader, body: body);
       return Right(res);
     } catch (error) {
       return Left(UnExpectedError());
@@ -74,7 +83,9 @@ class HttpService {
       String url, String token) async {
     try {
       publicHeader['Authorization'] = token;
-      final res = await this.client.get(url, headers: publicHeader);
+      var urlUri = Uri.parse(url);
+
+      final res = await this.client.get(urlUri, headers: publicHeader);
       return Right(res);
     } catch (error) {
       return Left(UnExpectedError());
@@ -85,7 +96,9 @@ class HttpService {
       String url, dynamic body, String token) async {
     try {
       publicHeader['Authorization'] = token;
-      final res = await this.client.put(url, headers: publicHeader, body: body);
+      var urlUri = Uri.parse(url);
+
+      final res = await this.client.put(urlUri, headers: publicHeader, body: body);
       return Right(res);
     } catch (error) {
       return Left(UnExpectedError());
@@ -96,7 +109,9 @@ class HttpService {
       String url, String token) async {
     try {
       publicHeader['Authorization'] = token;
-      final res = await this.client.delete(url, headers: publicHeader);
+      var urlUri = Uri.parse(url);
+
+      final res = await this.client.delete(urlUri, headers: publicHeader);
       return Right(res);
     } catch (error) {
       return Left(UnExpectedError());

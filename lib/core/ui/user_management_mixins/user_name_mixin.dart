@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:shhnatycemexdriver/core/screen_utils/screen_utils.dart';
 import 'package:shhnatycemexdriver/core/ui/styles/global_styles.dart';
 import 'package:shhnatycemexdriver/core/validators/base_validator.dart';

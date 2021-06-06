@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shhnatycemexdriver/core/screen_utils/screen_utils.dart';
 
-const String TAG = 'Abeer >>>>>>';
+const String TAG = 'azhar >>>>>>';
 const APP_NAME = 'Shhnaty';
 // URL
-const String baseUrl = "http://105.198.228.83:90/api";
+const String baseUrl = "http://20.86.97.165:90/api";
 const String trunksUrl = baseUrl + "/trucks";
 const String  postTruck = trunksUrl + "/assignToMobile";
 const String allTrips = baseUrl +"/trips";

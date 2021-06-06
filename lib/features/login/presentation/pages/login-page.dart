@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'dart:isolate';
 import 'dart:ui';
 import 'package:background_locator/background_locator.dart';
@@ -179,7 +180,7 @@ class LoginWidgetState extends State<LoginWidget> {
                                 ),
                                 SizedBox(height: 30.0),
                                 BlocConsumer(
-                                    cubit: _bloc,
+                                  bloc: _bloc,
                                     builder: (context, state) {
 
                                       if (state is LoginFailedState) {

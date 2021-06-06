@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'dart:convert';
 import 'package:shhnatycemexdriver/features/trip_detail/data/models/trip.dart';
 

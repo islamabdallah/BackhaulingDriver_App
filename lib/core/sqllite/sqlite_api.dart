@@ -1,12 +1,15 @@
+// @dart=2.9
+
 import 'package:sqflite/sqflite.dart' as sql;
 import 'package:path/path.dart' as path;
 import 'package:sqflite/sqlite_api.dart';
 
 class DBHelper {
+
   static Future<Database> database() async {
     final dbPath = await sql.getDatabasesPath();
-    return sql.openDatabase(path.join(dbPath, 'trip_db.db'),
-        onCreate: _create, version: 1);
+    final database = sql.openDatabase(path.join(dbPath, 'trip_db.db'), onCreate:_create, version: 1,);
+    return database;
   }
 
  static  Future _create(Database db, int version) async {
@@ -108,4 +111,6 @@ class DBHelper {
 //    return await db.update(table, data,
 //        where: '$key = ?', whereArgs: [value]);
   }
+
+
 }

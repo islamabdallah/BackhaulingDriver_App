@@ -1,3 +1,5 @@
+// @dart=2.9
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:isolate';
@@ -5,6 +7,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:background_locator/location_dto.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:shhnatycemexdriver/core/errors/custom_error.dart';
 import 'package:shhnatycemexdriver/core/models/empty_response_model.dart';
 import 'package:shhnatycemexdriver/core/repositories/core_repository.dart';
@@ -81,11 +84,11 @@ class LocationServiceRepository {
         '------------\n$label: ${formatDateLog(date)}\n------------\n');
   }
 
-   Future<Result<RemoteResultModel<String>>> updateTrip(LocationDto location) async {
+   Future<Result<RemoteResultModel<String>>> updateTrip( location) async {
     TripModel tripModel = await truckLocation(location);
     if (tripModel == null) return Result(error: CustomError(message: 'no truck no'));
     var dataDB =  await DBHelper.getData('truck_trip');
-    List list = List();
+    List list = [];
 //    list.add(tripModel.toJson());
     dataDB.map((trip){
 //      print(TripModel.fromJson(trip).toJson());
@@ -104,6 +107,7 @@ class LocationServiceRepository {
         converter: null,
         data: json.encode(list));
     if (response.hasDataOnly) {
+      print("callBack");
       print(response.data);
       final res = response.data;
       final _data = RemoteResultModel<String>.fromJson(res);
@@ -120,18 +124,23 @@ class LocationServiceRepository {
       return Result(error: response.error);
     }
   }
-  truckLocation(LocationDto location) async{
+  truckLocation(location) async{
 //    LocalStorageService  localStorage = LocalStorageService();
 //    TruckNumberModel truckNumber = await localStorage.getTruckModel();
 //    NotificationModel trip = await localStorage.getCurrentTrip();
 //    String token = await  localStorage.getToken();
 //    String driverID = await localStorage.getDriverID();
 //    String tripStatus =  await localStorage.getTripStatus();
-    final currentTripDB = await DBHelper.getData('current_trip');
-    NotificationModel trip = (currentTripDB.length > 0) ? NotificationModel.fromJson(currentTripDB[0]) : null;
+
     final currentTruckDB = await DBHelper.getData('truck_status');
     TrucKDataModel trucKData = (currentTruckDB.length > 0) ? TrucKDataModel.fromJson(currentTruckDB[0]): null;
     if(trucKData == null ) return null;
+
+    final currentTripDB = await DBHelper.getData('current_trip');
+    NotificationModel trip = (currentTripDB.length > 0) ? NotificationModel.fromJson(currentTripDB[0]) : null;
+//    String token = await  PushNotificationService.getDeviceToken();
+    String token = await  LocalStorageService().getToken();
+//    String token = await FirebaseMessaging.instance.getToken();
 
     var now = new DateTime.now();
     TripModel tripModel = TripModel(
@@ -141,7 +150,8 @@ class LocationServiceRepository {
       tripStatus: trucKData?.tripBreak == 0 ? trucKData?.tripStatus: '7_Break',
       dateTime: now.toString(),
       sapTruckNumber: trucKData?.sapTruckNumber,
-      firebaseToken: trucKData?.firebaseToken,
+//      firebaseToken: trucKData?.firebaseToken,
+      firebaseToken: token,
       lat: (location != null) ? location.latitude.toString() : null,
       long:(location != null) ? location.longitude.toString() : null,
       driverId: (trucKData?.driverId == null )? '0': trucKData?.driverId,

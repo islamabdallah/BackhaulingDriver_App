@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -62,7 +63,7 @@ class NotificationWidgetState extends State<NotificationWidget> {
         padding: EdgeInsets.only(left: 10,right: 10),
         // start bloc
         child: BlocConsumer(
-            cubit: _bloc,
+            bloc: _bloc,
             builder: (context, state) {
              return (notificationList.isNotEmpty) ? ListView.builder(
                itemBuilder: (ctx, index) {

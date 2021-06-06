@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shhnatycemexdriver/core/constants.dart';
@@ -24,7 +25,7 @@ class HomeRepositoryImplementation {
 //    var test = 'http://105.198.228.83:90/api/driver/trucks/%D9%8A%20%D8%A8%20%D8%AC%205312';
     var testUrl = logOutUrl.split('%0D%0A').first;
 
-    final response = await CoreRepository.request(url: testUrl, method: HttpMethod.GET, converter: null,);
+    final response = await CoreRepository.request(url: testUrl, method: HttpMethod.GET,);
     if (response.hasDataOnly) {
       final res = response.data;
       final _data = RemoteResultModel<String>.fromJson(res);

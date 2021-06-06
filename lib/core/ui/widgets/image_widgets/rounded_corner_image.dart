@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:shhnatycemexdriver/core/ui/widgets/image_widgets/cached_image.dart';
 import 'package:flutter/material.dart';
 

@@ -4,6 +4,7 @@ import 'package:shhnatycemexdriver/core/constants.dart';
 import 'package:shhnatycemexdriver/core/services/navigation_service/navigation_service.dart';
 import 'package:shhnatycemexdriver/core/ui/styles/global_colors.dart';
 import 'package:shhnatycemexdriver/features/login/presentation/pages/login-page.dart';
+import 'package:shhnatycemexdriver/features/admin-login/presentation/pages/admin-login-page.dart';
 import 'package:flutter/material.dart';
 import 'package:shhnatycemexdriver/features/splsh/presentation/bloc/splash-bloc.dart';
 import 'package:shhnatycemexdriver/features/splsh/presentation/bloc/splash-event.dart';
@@ -42,7 +43,7 @@ class SplashWidgetState extends State<SplashWidget> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, allowFontScaling: true);
+    ScreenUtil.init(BoxConstraints(maxWidth: double.infinity,maxHeight:  double.infinity));
     ScreensHelper(context);
     return Scaffold(
       body: Stack(
@@ -69,7 +70,7 @@ class SplashWidgetState extends State<SplashWidget> {
             height: ScreensHelper.fromHeight(0.5),
             bottom: ScreensHelper.fromHeight(4),
             child: BlocConsumer<SplashBloc, BaseSplashState>(
-              cubit: _splashBloc,
+              bloc: _splashBloc,
               listener: (context, state) {
                 if (state is SplashSuccessState) {
                   print('${state.goToLoginPage}, ${state.goToTruckNumberPage}');
@@ -78,6 +79,7 @@ class SplashWidgetState extends State<SplashWidget> {
                   }
 
                   if (state.goToTruckNumberPage) {
+//                    Navigator.pushReplacementNamed(context,AdminLoginWidget.routeName);
                     Navigator.pushReplacementNamed(context,TruckNumberWidget.routeName);
                   }
                 }

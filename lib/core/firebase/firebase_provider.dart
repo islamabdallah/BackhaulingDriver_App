@@ -18,7 +18,7 @@ import '../errors/firebase_error/auth_error_const.dart';
 
 class FirebaseProvider {
   static Future<Either<BaseError, RES>> getFirebaseResult<RES>({
-    @required Function0<Future<RES>> request,
+    required Function0<Future<RES>> request,
   }) async {
     try {
       return right(await request());

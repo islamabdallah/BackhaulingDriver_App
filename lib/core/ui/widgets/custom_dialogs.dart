@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:shhnatycemexdriver/core/screen_utils/screen_utils.dart';
 import 'package:shhnatycemexdriver/core/ui/styles/global_colors.dart';
@@ -15,8 +16,7 @@ class CustomDialogs {
     showDialog(
         barrierDismissible: barrierDismissible,
         context: context,
-        child: StatefulBuilder(
-          builder: (BuildContext context, setTheState) {
+          builder: (BuildContext context) {
             return AlertDialog(
               content: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -78,7 +78,7 @@ class CustomDialogs {
                   ]),
               ),
             );
-          },
-        ));
+          }
+        );
   }
 }

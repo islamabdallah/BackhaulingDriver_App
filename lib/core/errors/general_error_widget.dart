@@ -10,10 +10,10 @@ class GeneralErrorWidget extends StatefulWidget {
   final String message;
 
   const GeneralErrorWidget({
-    Key key,
-    this.callback,
-    this.message,
-    this.body,
+    Key? key,
+    required  this.callback,
+    required this.message,
+    required  this.body,
     this.error,
   }) : super(key: key);
 

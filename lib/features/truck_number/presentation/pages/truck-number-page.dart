@@ -1,9 +1,7 @@
+// @dart=2.9
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shhnatycemexdriver/core/constants.dart';
-import 'package:shhnatycemexdriver/core/firebase/push_notification_service.dart';
-import 'package:shhnatycemexdriver/core/services/navigation_service/navigation_service.dart';
-import 'package:shhnatycemexdriver/core/ui/widgets/logo_widget.dart';
 import 'package:shhnatycemexdriver/features/login/presentation/pages/login-page.dart';
 import 'package:flutter/material.dart';
 import 'package:shhnatycemexdriver/features/share/loading-dialog.dart';
@@ -11,7 +9,6 @@ import 'package:shhnatycemexdriver/features/truck_number/presentation/bloc/truck
 import 'package:shhnatycemexdriver/features/truck_number/presentation/bloc/truck-number-event.dart';
 import 'package:shhnatycemexdriver/features/truck_number/presentation/bloc/truck-number-state.dart';
 import 'package:searchable_dropdown/searchable_dropdown.dart';
-import 'package:shhnatycemexdriver/core/app_shared_prefs.dart';
 import 'package:shhnatycemexdriver/features/truck_number/data/models/truck-number.dart';
 
 class TruckNumberWidget extends StatefulWidget {
@@ -79,7 +76,7 @@ class TruckNumberWidgetState extends State<TruckNumberWidget> {
           Container(
               margin: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
               child: BlocConsumer(
-                  cubit: _bloc,
+                  bloc: _bloc,
                   builder: (context, state) {
                     return  Column(
                         mainAxisAlignment: MainAxisAlignment.center,

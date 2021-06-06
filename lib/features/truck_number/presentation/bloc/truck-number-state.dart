@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:shhnatycemexdriver/core/base_bloc/base_bloc.dart';
 import 'package:shhnatycemexdriver/core/errors/base_error.dart';
 import 'package:shhnatycemexdriver/features/truck_number/data/models/truck-number.dart';

@@ -1,3 +1,5 @@
+// @dart=2.9
+
 class ModelsFactory {
   // Singleton handling.
   static ModelsFactory _instance;

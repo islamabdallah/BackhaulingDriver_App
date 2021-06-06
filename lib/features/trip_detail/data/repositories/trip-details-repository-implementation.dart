@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shhnatycemexdriver/core/constants.dart';
@@ -19,9 +20,14 @@ class TripDetailRepositoryImplementation {
 
   Future<Result<RemoteResultModel<String>>> updateTripStatus({NotificationModel trip,String status}) async {
     TripModel tripModel = await LocationService().truckLocation();
-    tripModel.requestId = trip.requestId;
-    tripModel.shipmentId = trip.shipmentId;
-    tripModel.tripStatus = status;
+    if(trip != null) {
+      tripModel.requestId = trip.requestId;
+      tripModel.shipmentId = trip.shipmentId;
+    }
+    if(status != null) {
+      tripModel.tripStatus = status;
+    }
+
 //    print(tripModel.requestId);
 //    print(tripModel.truckNumber);
     var dataDB =  await DBHelper.getData('truck_trip');

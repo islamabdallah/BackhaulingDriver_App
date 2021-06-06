@@ -7,7 +7,7 @@ import 'package:shhnatycemexdriver/core/models/base_model.dart';
 abstract class BaseState {}
 
 abstract class BaseEvent {
-  BuildContext context;
+  BuildContext? context;
   BaseEvent({this.context});
 }
 
@@ -38,7 +38,7 @@ class BaseFailedState extends BaseState {
 }
 
 class BaseToastState extends BaseState {
-  String message;
+  String? message;
 
   BaseToastState(obj) {
     if (obj is String) {
@@ -53,7 +53,7 @@ class BaseToastState extends BaseState {
 class BaseInitialState extends BaseState {}
 
 abstract class BaseBLoc extends Bloc<BaseEvent, BaseState> {
-  BaseModel lastSuccessStateData;
+  late BaseModel lastSuccessStateData;
 
   BaseBLoc(BaseState initialState) : super(initialState);
 

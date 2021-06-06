@@ -1,3 +1,5 @@
+// @dart=2.9
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,6 +23,6 @@ class ScreensHelper {
   }
 
   static scaleText(double fontSize, {bool allowFontScalingSelf}) {
-    return ScreenUtil().setSp(fontSize, allowFontScalingSelf: allowFontScalingSelf);
+    return ScreenUtil().setSp(fontSize);
   }
 }

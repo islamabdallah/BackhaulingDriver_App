@@ -1,3 +1,5 @@
+// @dart=2.9
+
 import 'package:shhnatycemexdriver/core/models/base_model.dart';
 
 class EmptyResultModel extends BaseModel {
