@@ -1,4 +1,4 @@
-package com.cemex.shhnatycemexdriver
+package com.example.shhnatycemexdriver
 
 import io.flutter.app.FlutterApplication
 import io.flutter.plugin.common.PluginRegistry
