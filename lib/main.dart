@@ -214,7 +214,7 @@ class _MyAppState extends State<MyApp> {
         autoStop: false,
         androidSettings: AndroidSettings(
             accuracy: LocationAccuracy.NAVIGATION,
-            interval: 300,
+            interval: 1200,
             distanceFilter: 0,
             client: LocationClient.google,
             androidNotificationSettings: AndroidNotificationSettings(
